@@ -6,6 +6,17 @@
         $scope.chord = '';
         $scope.result = '';
         $scope.hidden = true;
+        $scope.difficulties = [
+            { name: 'C Major', value: 1 },
+            { name: 'G Major', value: 2 },
+            { name: 'D Major', value: 3 },
+            { name: 'A Major', value: 4 },
+            { name: 'E Major', value: 5 },
+            { name: 'B Major', value: 6 },
+            { name: 'F# Major', value: 7 }
+        ];
+
+        $scope.difficulty = $scope.difficulties[0];
 
         var actualAnswer = '';
         var totalQuestions = 0;
@@ -14,11 +25,10 @@
         var id = '';
 
         $scope.getQuestion = function() {
-            $http.get('/api/Question').success(function(data) {
+            $http.get('/api/Question?difficulty=' + $scope.difficulty.value).success(function(data) {
                 $scope.chord = data.Chord;
                 actualAnswer = data.Name;
                 id = data.Id;
-                totalQuestions++;
             }).error(function() {
                 $scope.result = 'Error getting next chord';
             });
@@ -31,6 +41,7 @@
                 if (!revealed) {
                     $scope.result = "Correct!";
                     totalCorrect++;
+                    totalQuestions++;
                 }
 
                 $scope.getQuestion();
@@ -66,8 +77,16 @@
 
         $scope.getScore = function() {
             var percent = (totalCorrect / totalQuestions) * 100;
+            if (isNaN(percent)) {
+                percent = 0;
+            }
 
             return totalCorrect + " out of " + totalQuestions + " (" + percent.toFixed(2) + "%)";
+        }
+
+        $scope.reset = function() {
+            totalQuestions = 0;
+            totalCorrect = 0;
         }
 
         $scope.getQuestion();

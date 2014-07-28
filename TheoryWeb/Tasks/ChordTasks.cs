@@ -16,9 +16,14 @@
             this.random = new Random();
         }
 
-        public QuestionModel GetChord()
+        public QuestionModel GetChord(int difficulty)
         {
-            var chord = MusicData.Chords.OrderBy(x => Guid.NewGuid()).First();
+            if (difficulty < 1)
+            {
+                difficulty = 1;
+            }
+
+            var chord = MusicData.Chords.Where(x => x.Difficulty <= difficulty).OrderBy(x => Guid.NewGuid()).First();
             var seventh = this.random.Next(0, 2) == 1;
 
             return new QuestionModel { Chord = chord.GetNotes(seventh), Name = chord.GetName(seventh), Id = chord.Id };

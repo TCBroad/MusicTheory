@@ -15,9 +15,9 @@
         }
 
         [HttpGet]
-        public QuestionModel Get()
+        public QuestionModel Get(int difficulty)
         {
-            return this.tasks.GetChord();
+            return this.tasks.GetChord(difficulty);
         }
     }
 }

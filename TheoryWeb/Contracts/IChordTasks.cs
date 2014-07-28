@@ -4,6 +4,6 @@
 
     public interface IChordTasks
     {
-        QuestionModel GetChord();
+        QuestionModel GetChord(int difficulty);
     }
 }

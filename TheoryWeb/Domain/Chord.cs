@@ -4,24 +4,32 @@ namespace TheoryWeb.Domain
 
     public class Chord
     {
-        public Note Note1 { get; set; }
-        public Note Note2 { get; set; }
-        public Note Note3 { get; set; }
-        public Note Note4 { get; set; }
-        public string Name { get; set; }
-        public string SeventhName { get; set; }
-        public Guid Id { get; private set; }
-
-
-        public Chord(params Note[] notes)
+        public Chord(int difficulty, params Note[] notes)
         {
             this.Note1 = notes[0];
             this.Note2 = notes[1];
             this.Note3 = notes[2];
             this.Note4 = notes[3];
+            this.Difficulty = difficulty;
 
             this.Id = Guid.NewGuid();
         }
+
+        public Note Note1 { get; set; }
+
+        public Note Note2 { get; set; }
+
+        public Note Note3 { get; set; }
+
+        public Note Note4 { get; set; }
+
+        public string Third { get; set; }
+
+        public string Seventh { get; set; }
+
+        public Guid Id { get; private set; }
+
+        public int Difficulty { get; set; }
 
         public string GetNotes(bool seventh)
         {
@@ -40,7 +48,7 @@ namespace TheoryWeb.Domain
 
         public string GetName(bool seventh)
         {
-            return string.Format("{0} {1}", this.Note1.GetEnumDescription(), seventh ? this.SeventhName : this.Name);
+            return string.Format("{0} {1}", this.Note1.GetEnumDescription(), seventh ? this.Seventh : this.Third);
         }
     }
 }
