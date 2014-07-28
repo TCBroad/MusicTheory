@@ -1,0 +1,28 @@
+﻿@using System.Web.Optimization
+
+<div class="page-header">
+    <h1>Chord Identification</h1>
+</div>
+<div class="jumbotron" ng-controller="ChordController">
+    <h1 ng-bind="chord"></h1>
+    <h2 ng-bind="result" ng-class="{'animate-hide': hidden}"></h2>
+    <form class="form-inline" role="form">
+        <div class="form-group">
+            <input type="text" ng-model="answer" class="form-control" placeholder="e.g. C# min7b5" enter-trigger="guess()" />
+        </div>
+        <button class="btn btn-primary" ng-click="guess()">Guess</button>
+        <button class="btn btn-danger" ng-click="reveal()">Reveal</button>
+    </form>
+    <p ng-bind="getScore()"></p>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/angular")
+
+    <script>
+        (function () {
+            var app = angular.module("Root");
+            app.run();
+        })();
+    </script>
+}

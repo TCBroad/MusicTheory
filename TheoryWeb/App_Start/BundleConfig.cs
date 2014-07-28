@@ -25,6 +25,7 @@
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                       "~/Scripts/angular.js",
                       "~/Angular/Modules/Root.js",
+                      "~/Angular/Directives/enterTriggerDirective.js",
                       "~/Angular/Controllers/ChordController.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
