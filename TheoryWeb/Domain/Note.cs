@@ -4,22 +4,22 @@ namespace TheoryWeb.Domain
 
     public enum Note
     {
-        A,
-        [Description("A#")]
-        ASharp,
-        B,
-        C,
+        C = 1,
         [Description("C#")]
-        CSharp,
-        D,
+        CSharp = 2,
+        D = 3,
         [Description("D#")]
-        DSharp,
-        E,
-        F,
+        DSharp = 4,
+        E = 5,
+        F = 6,
         [Description("F#")]
-        FSharp,
-        G,
+        FSharp = 7,
+        G = 8,
         [Description("G#")]
-        GSharp
+        GSharp = 9,
+        A = 10,
+        [Description("A#")]
+        ASharp = 11,
+        B = 12
     }
 }

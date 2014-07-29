@@ -37,7 +37,7 @@
         var timeout = null;
         $scope.guess = function () {
             $scope.hidden = false;
-            if ($scope.answer.replace(' ', '') === actualAnswer.replace(' ','')) {
+            if ($scope.answer.replace(' ', '').toLocaleLowerCase() === actualAnswer.replace(' ', '').toLocaleLowerCase()) {
                 if (!revealed) {
                     $scope.result = "Correct!";
                     totalCorrect++;
