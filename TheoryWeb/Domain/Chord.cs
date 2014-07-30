@@ -31,6 +31,8 @@ namespace TheoryWeb.Domain
 
         public int Difficulty { get; set; }
 
+        public Note Key { get; set; }
+
         public string GetNotes(bool seventh)
         {
             if (seventh)

@@ -6,6 +6,8 @@
         $scope.chord = '';
         $scope.result = '';
         $scope.hidden = true;
+        $scope.showHint = false;
+        $scope.hint = '';
         $scope.difficulties = [
             { name: 'C Major', value: 1 },
             { name: 'G Major', value: 2 },
@@ -29,6 +31,7 @@
                 $scope.chord = data.Chord;
                 actualAnswer = data.Name;
                 id = data.Id;
+                $scope.hint = data.Key;
             }).error(function() {
                 $scope.result = 'Error getting next chord';
             });

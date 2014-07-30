@@ -26,7 +26,7 @@
             var chord = this.BuildChord(difficulty);
             var seventh = this.random.Next(0, 2) == 1;
 
-            return new QuestionModel { Chord = chord.GetNotes(seventh), Name = chord.GetName(seventh), Id = chord.Id };
+            return new QuestionModel { Chord = chord.GetNotes(seventh), Name = chord.GetName(seventh), Id = chord.Id, Key = chord.Key.GetEnumDescription() };
         }
 
         private Chord BuildChord(int key)
@@ -52,7 +52,7 @@
             var note3 = scales[currentKey][(4 + root) % 7];
             var note4 = scales[currentKey][(6 + root) % 7];
 
-            return new Chord(currentKey, note1, note2, note3, note4) { Third = thirds[root], Seventh = sevenths[root] };
+            return new Chord(currentKey, note1, note2, note3, note4) { Third = thirds[root], Seventh = sevenths[root], Key = scales[currentKey][0] };
         }
     }
 }

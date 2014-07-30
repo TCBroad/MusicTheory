@@ -5,6 +5,7 @@
 </div>
 <div class="jumbotron" ng-controller="ChordController">
     <h1 ng-bind="chord"></h1>
+    <h2 ng-bind="'Key: ' + hint + ' Major'" ng-show="showHint"></h2>
     <h2 ng-bind="result" ng-class="{'animate-hide': hidden}"></h2>
     <form class="form-inline" role="form">
         <div class="form-group">
@@ -13,6 +14,7 @@
         <button class="btn btn-primary" ng-click="guess()">Guess</button>
         <button class="btn btn-danger" ng-click="reveal()">Reveal</button>
         <button class="btn btn-default" ng-click="reset()">Reset Score</button>
+        <label><input type="checkbox" ng-model="showHint" />Show hints</label>
     </form>
     <p ng-bind="getScore()"></p>
     <div class="form-group">
